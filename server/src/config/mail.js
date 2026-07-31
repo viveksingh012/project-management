@@ -29,6 +29,9 @@ dotenv.config();
 //   connectionTimeout: 10000,
 //   greetingTimeout: 10000,
 // });
+console.log(process.env.SMTP_HOST);
+console.log(process.env.SMTP_PORT);
+console.log(process.env.SMTP_USER);
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,

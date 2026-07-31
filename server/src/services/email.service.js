@@ -7,6 +7,9 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 // slow, unreachable, or misconfigured). We cap the wait with a timeout.
 
 // transport verify
+console.log(process.env.SMTP_HOST);
+console.log(process.env.SMTP_PORT);
+console.log(process.env.SMTP_USER);
 
 transporter.verify((error, success) => {
   if (error) {
