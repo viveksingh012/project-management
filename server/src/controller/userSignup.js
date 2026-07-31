@@ -127,6 +127,8 @@ const userLogin = async (req, res, next) => {
 
         await db.query("UPDATE users SET refresh_token = $1 WHERE id = $2", [rtoken, resultData.id]);
 
+        console.log("NODE_ENV =", process.env.NODE_ENV);
+        console.log(cookieOptions);
         res.cookie("rtoken", rtoken, cookieOptions)
             .cookie("atoken", atoken, cookieOptions)
             .status(200)
