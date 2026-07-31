@@ -18,7 +18,7 @@ transporter.verify((error, success) => {
 
 const sendMail = ({ to, subject, html, text }) => {
     const send = transporter.sendMail({
-        from: process.env.EMAIL_USER || 'noreply.projecto@gmail.com',
+        from: process.env.SMTP_USER || 'b3f83c001@smtp-brevo.com',
         to,
         subject,
         text,
