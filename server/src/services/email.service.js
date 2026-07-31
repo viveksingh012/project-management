@@ -25,13 +25,13 @@ const sendMail = ({ to, subject, html, text }) => {
         html,
     });
 
-    const timeout = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("SMTP timeout")), 8000)
-    );
+    // const timeout = new Promise((_, reject) =>
+    //     setTimeout(() => reject(new Error("SMTP timeout")), 8000)
+    // );
 
-    Promise.race([send, timeout]).catch((error) => {
-        console.error("Failed to send email:", error.message);
-    });
+    // Promise.race([send, timeout]).catch((error) => {
+    //     console.error("Failed to send email:", error.message);
+    // });
 };
 
 const sendVerificationEmail = async (email, token) => {
