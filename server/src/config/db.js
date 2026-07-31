@@ -2,20 +2,20 @@ import pg from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
-
+console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
 const { Pool } = pg;
-
 const pool = new Pool({
-    host: process.env.DB_HOST || "localhost",
-    port: Number(process.env.DB_PORT) || 5432,
-    user: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASSWORD || "postgres",
-    database: process.env.DB_NAME || "projectcamp",
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 pool.on("error", (err) => {
     console.error("Unexpected error on idle Postgres client", err);
 });
+
 
 // Thin wrapper so the rest of the app can keep calling db.query(...)
 const db = {
