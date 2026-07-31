@@ -5,9 +5,20 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 // Fire-and-forget: email delivery should never block or fail the HTTP
 // response (register/login/forgot-password all still work if SMTP is
 // slow, unreachable, or misconfigured). We cap the wait with a timeout.
+
+// transport verify
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("SMTP Connected");
+  }
+});
+
 const sendMail = ({ to, subject, html, text }) => {
     const send = transporter.sendMail({
-        from: process.env.MAIL_FROM || "Project Camp <no-reply@projectcamp.dev>",
+        from: process.env.EMAIL_USER || 'noreply.projecto@gmail.com',
         to,
         subject,
         text,
@@ -50,5 +61,6 @@ const sendResetVerificationEmail = async (email, token) => {
         text: `Reset your password: ${resetLink}`,
     });
 };
+
 
 export { sendVerificationEmail, sendResetVerificationEmail };

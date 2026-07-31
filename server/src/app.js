@@ -17,7 +17,8 @@ const app = express();
 
 app.use(
     cors({
-        origin: process.env.CORS_ORIGIN || "https://project-management-bice-two.vercel.app",
+        origin: process.env.CORS_ORIGIN,
+
         credentials: true,
     })
 );
