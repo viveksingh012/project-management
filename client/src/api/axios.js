@@ -4,7 +4,7 @@ import axios from "axios";
 // request needs credentials included. If your backend instead returns tokens
 // in the JSON body, store them and swap this for an Authorization header.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "https://project-management-xxp6.onrender.com/api/v1",
+  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/v1",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
