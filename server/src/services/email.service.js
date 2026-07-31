@@ -19,14 +19,24 @@ transporter.verify((error, success) => {
   }
 });
 
-const sendMail = ({ to, subject, html, text }) => {
-    const send = transporter.sendMail({
-        from: process.env.SMTP_USER || 'b3f83c001@smtp-brevo.com',
-        to,
-        subject,
-        text,
-        html,
-    });
+// const sendMail = ({ to, subject, html, text }) => {
+//     const send = transporter.sendMail({
+//         from: process.env.SMTP_USER || 'b3f83c001@smtp-brevo.com',
+//         to,
+//         subject,
+//         text,
+//         html,
+//     });
+
+const sendMail = async ({ to, subject, html, text }) => {
+  return await transporter.sendMail({
+    from: `"Project Camp" <${process.env.SMTP_USER}>`,
+    to,
+    subject,
+    text,
+    html,
+  });
+};
 
     // const timeout = new Promise((_, reject) =>
     //     setTimeout(() => reject(new Error("SMTP timeout")), 8000)
@@ -35,7 +45,6 @@ const sendMail = ({ to, subject, html, text }) => {
     // Promise.race([send, timeout]).catch((error) => {
     //     console.error("Failed to send email:", error.message);
     // });
-};
 
 const sendVerificationEmail = async (email, token) => {
     const verificationLink = `${FRONTEND_URL}/verify-email/${token}`;
