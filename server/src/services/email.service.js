@@ -30,7 +30,7 @@ transporter.verify((error, success) => {
 
 const sendMail = async ({ to, subject, html, text }) => {
   return await transporter.sendMail({
-    from: `"Project Camp" <${process.env.SMTP_USER}>`,
+    from: `"Project Camp" <${process.env.SMTP_SEND}>`,
     to,
     subject,
     text,
