@@ -37,6 +37,13 @@ const userSignup = async (req, res, next) => {
              RETURNING *`,
             [username, email, hashedPassword, fullName || null, verificationToken, verificationTokenExpiry]
         );
+            return apiResponse(
+            res,
+            201,
+            true,
+            "User registered successfully. before sending Please verify your email.",
+            serializeUser(result.rows[0])
+        );
 
         await sendVerificationEmail(email, verificationToken);
 
