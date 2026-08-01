@@ -11,13 +11,13 @@ console.log(process.env.SMTP_HOST);
 console.log(process.env.SMTP_PORT);
 console.log(process.env.SMTP_USER);
 
-transporter.verify((error, success) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("SMTP Connected");
-  }
-});
+// transporter.verify((error, success) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("SMTP Connected");
+//   }
+// });
 
 // const sendMail = ({ to, subject, html, text }) => {
 //     const send = transporter.sendMail({
